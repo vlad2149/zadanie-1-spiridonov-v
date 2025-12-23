@@ -1,0 +1,53 @@
+def solve(maze):
+    start = None
+    for i, row in enumerate(maze):
+        for j, ch in enumerate(row):
+            if ch == '$':
+                start = (i, j)
+                break
+        if start:
+            break
+    
+    rows, cols = len(maze), len(maze[0])
+    directions = {
+        'up': (-1, 0),
+        'down': (1, 0),
+        'left': (0, -1),
+        'right': (0, 1)
+    }
+    path = []
+    visited = set()
+    
+    def dfs(r, c):
+        if r < 0 or r >= rows or c < 0 or c >= cols:
+            return False
+        if maze[r][c] == '#':
+            return False
+        if (r, c) in visited:
+            return False
+        if maze[r][c] == 'X':
+            return True
+        
+        visited.add((r, c))
+        
+        for move, (dr, dc) in directions.items():
+            nr, nc = r + dr, c + dc
+            if dfs(nr, nc):
+                path.append(move)
+                return True
+        
+        visited.remove((r, c))
+        return False
+    
+    dfs(start[0], start[1])
+    path.reverse()
+    return path
+
+
+maze = [
+    "$---",
+    "----",
+    "----",
+    "---X"
+]
+print(solve(maze))
