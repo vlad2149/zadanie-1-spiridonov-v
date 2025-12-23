@@ -1,0 +1,63 @@
+#1
+"""def schitat_sposobi(start, end, forbidden=None):
+    if forbidden is None:
+        forbidden = set()
+    if start > end:
+        return 0
+    if start == end:
+        return 1
+    if start in forbidden:
+        return 0
+    
+    total = 0
+    total += schitat_sposobi(start + 1, end, forbidden)
+    total += schitat_sposobi(start + 2, end, forbidden)
+    total += schitat_sposobi(start * 2, end, forbidden)
+    return total
+
+ways1 = schitat_sposobi(3, 10)
+print(f"Из 3 в 10: {ways1}")
+
+ways2 = schitat_sposobi(10, 12)
+print(f"Из 10 в 12: {ways2}")
+
+total_ways = ways1 * ways2
+print(f"Общее количество программ: {total_ways}")
+"""
+#2
+"""def count_ways_F(start, end, forbidden):
+    if start > end or start in forbidden:
+        return 0
+    if start == end:
+        return 1
+    
+    total = 0
+    total += count_ways_F(start + 1, end, forbidden)
+    total += count_ways_F(start * 2 + 1, end, forbidden)
+    return total
+
+ways_F = count_ways_F(1, 27, {26})
+print(f"Количество программ из 1 в 27 без числа 26: {ways_F}")"""
+
+#3
+"""def count_ways_S(start, end, forbidden, must_contain=None):
+    if start > end or start in forbidden:
+        return 0
+    if start == end:
+        return 1
+    
+    total = 0
+    # +1
+    total += count_ways_S(start + 1, end, forbidden, must_contain)
+    # +2
+    total += count_ways_S(start + 2, end, forbidden, must_contain)
+    return total
+
+ways_to_9 = count_ways_S(2, 9, {14})
+print(f"Из 2 в 9 без 14: {ways_to_9}")
+
+ways_from_9 = count_ways_S(9, 18, {14})
+print(f"Из 9 в 18 без 14: {ways_from_9}")
+
+total_S = ways_to_9 * ways_from_9
+print(f"Общее количество программ: {total_S}")"""
