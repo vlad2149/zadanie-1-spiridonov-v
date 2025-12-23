@@ -1,0 +1,44 @@
+def factorial(n):
+    if n == 1 or n == 0:
+        return 1
+    return n * factorial(n - 1)
+
+print(factorial(1))  
+print(factorial(2))  
+print(factorial(3))  
+print(factorial(4))  
+print(factorial(5))   
+print(factorial(6))  
+print(factorial(7))   
+print(factorial(8))   
+
+def remove_vowels(string):
+    vowels = "aeiou"
+    if string == "":
+        return ""
+    if string[0] in vowels:
+        return remove_vowels(string[1:])
+    return string[0] + remove_vowels(string[1:])
+
+print(remove_vowels('apple'))    
+print(remove_vowels('orange'))   
+print(remove_vowels('pear'))       
+print(remove_vowels('pineapple'))  
+print(remove_vowels('durian'))    
+print(remove_vowels('banana'))     
+
+def pascal(n):
+    if n == 1:
+        return [1]
+    prev_line = pascal(n - 1)
+    line = [1]
+    for i in range(len(prev_line) - 1):
+        line.append(prev_line[i] + prev_line[i + 1])
+    line.append(1)
+    return line
+
+print(pascal(1))  
+print(pascal(2)) 
+print(pascal(3)) 
+print(pascal(4))  
+print(pascal(5))  
